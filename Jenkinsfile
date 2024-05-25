@@ -21,5 +21,12 @@ pipeline{
                 }
             }
         }
+        stage("Pushing to K8's"){
+            steps{
+                script{
+                    kubernetesDeploy (configs: 'deploymentservice.yaml', kubeconfigId: 'Kubeconfig')
+                }
+            }
+        }
     }
 }
