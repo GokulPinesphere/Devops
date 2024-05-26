@@ -1,0 +1,38 @@
+#deployment
+apiVersion : v1
+kind : Deployment
+metadata:
+  name:
+  lables:
+    app:myapp
+spec:
+  replicas: 1
+  selector:
+  matchLables:
+    app:myapp
+  template:
+    metadata:
+    label:
+      app:myapp
+    spec:
+      container:
+      -name: myapp_container
+      image: my_image
+      ports:
+      -containerport: 80
+
+#service
+apiVersion: v1
+kind: service
+metadata:
+  name:
+  labels:
+    app:myapp
+spec:
+  selector:
+  app:myapp
+  ports:
+  -protocol: TCP
+  port:80
+  targetport:80
+type: loadBalancer
