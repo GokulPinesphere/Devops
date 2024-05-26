@@ -1,5 +1,8 @@
 pipeline{
     agent any
+    environment {
+        KUBECONFIG = '/home/ubuntu/.kube/config'
+    }
     stages{
         stage("checkout from git"){
             steps{
